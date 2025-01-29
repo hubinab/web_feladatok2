@@ -1,9 +1,30 @@
 body{
-    background-image:linear-gradient(rgba(34,193,195,1), rgba(253,187,45,1));
+    background-image:linear-gradient(rgba(253,187,45,1), rgba(34,193,195,1));
     background-attachment: fixed;
 }
 
 h1{
     text-align: center;
     text-shadow: 2px 1px 3px white;
+}
+
+#sakk{
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    background-image: url("./832px-16_wood_samples\ .jpg");
+    background-size: cover;
+    margin: auto;
+    padding: 0.5rem;
+    border-spacing: 0.5rem;
+}
+
+td{
+    padding: 0.5rem;
+    border: 2px dotted darkblue;
+    border-radius: 0.5rem;
+}
+
+#sakk>tbody>tr:nth-child(odd)>td:nth-child(even), #sakk>tbody>tr:nth-child(even)>td:nth-child(odd){
+    color: white;
+    background-color: rgb(0 0 0/0.6);
 }
