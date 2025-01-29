@@ -1,0 +1,35 @@
+#bevlist{
+    border: 5px solid darkblue;
+    background-color: lightcyan;
+    padding: 20px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 300px;
+    list-style: none;
+}
+
+#bevlist ul li {
+    list-style: none;
+    line-height: 1.5rem;
+}
+
+#bevlist li{
+    color: red;
+    text-transform: uppercase;
+}
+
+#bevlist>li>ul>li{
+    color: blue;
+    text-transform: capitalize;
+    font-variant: small-caps;
+}
+
+#bevlist>li>ul>li>ul>li{
+    color: green;
+    text-transform: none;
+    font-variant: normal;
+    text-transform: capitalize;
+}
+
+

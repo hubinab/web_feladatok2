@@ -1,0 +1,9 @@
+body{
+    background-image:linear-gradient(rgba(34,193,195,1), rgba(253,187,45,1));
+    background-attachment: fixed;
+}
+
+h1{
+    text-align: center;
+    text-shadow: 2px 1px 3px white;
+}
