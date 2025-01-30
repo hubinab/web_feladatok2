@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC, #9599E2 );
+    background-attachment: fixed;
+    font-family: "Roboto", serif;
+}
+
+body ::selection{
+    background-color: #fb729dc2;
+}
+
+#iphone{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#iphone{
+    border-collapse: collapse;
+}
+
+#iphone>tr>td{
+    margin: 0.5rem;
+}
+
+#iphone img{
+    max-width: 250px;
+}
+
+#iphone td:first-child{
+    text-align: left;
+    font-weight: bold;
+}
+
+#iphone .new::after{
+    content: "új";
+    color: red;
+    margin-left: 1em;
+    margin-right: 1em;
+    text-transform: uppercase;
+}
+
+#iphone tr th[lang|="en"] .new::after{
+    content: "new";
+}
+
+#iphone h2::first-letter{
+    color: purple;
+}
+
+#iphone tr:nth-child(even){
+    background-color: rgb(255 255 255 / 0.1);
+}
+
+#iphone tr:nth-child(odd){
+    background-color: rgb(255 255 255 / 0.5);
+}
