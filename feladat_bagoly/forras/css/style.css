@@ -1,0 +1,80 @@
+body{
+    margin: 50px;
+}
+
+.row{
+    background-color: #bbb;
+    border-radius: 30px;
+    box-shadow: 3px 3px 25px rgb(0, 0, 0, 0.8);}
+
+header {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+@media screen and (max-width: 576px){
+    .row{
+        border-radius: 0;    
+    }
+
+    body{
+        margin: 0;
+    }
+}
+
+img{
+    width: 100%;
+
+}
+
+@media screen and (min-width: 576px){
+    header{
+        background-image: url("../img/eagle-owl_576w.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 200px;
+    }
+    body{
+        background: linear-gradient(to bottom,  #fb83fa 0%,#e93cec 100%);
+        background-attachment: fixed;
+    }
+}
+
+@media screen and (min-width: 768px){
+    header{
+        background-image: url("../img/eagle-owl_768w.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 300px;
+    }
+    body{
+        background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%);
+        background-attachment: fixed;
+    }
+}
+
+@media screen and (min-width: 992px){
+    header{
+        background-image: url("../img/eagle-owl_992w.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 400px;
+    }
+    body{
+        background: linear-gradient(to bottom,  #c5deea 0%,#8abbd7 31%,#066dab 100%);
+        background-attachment: fixed;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    header{
+        background-image: url("../img/eagle-owl_1200w.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 400px;
+    }
+    body{
+        background: linear-gradient(to bottom,  #ffc578 0%,#fb9d23 100%); 
+        background-attachment: fixed;
+    }
+}
