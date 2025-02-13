@@ -1,11 +1,13 @@
 body{
-    margin: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .row{
     background-color: #bbb;
     border-radius: 30px;
-    box-shadow: 3px 3px 25px rgb(0, 0, 0, 0.8);}
+    box-shadow: 4px 4px 40px black;
+}
 
 header {
     border-top-left-radius: 30px;
@@ -22,9 +24,16 @@ header {
     }
 }
 
-img{
-    width: 100%;
+.courgette-regular {
+    font-family: "Courgette", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 
+img{
+    box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.6);
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 576px){
@@ -76,5 +85,11 @@ img{
     body{
         background: linear-gradient(to bottom,  #ffc578 0%,#fb9d23 100%); 
         background-attachment: fixed;
+    }
+
+    p span{
+        font-weight: bold;
+        font-style: italic;
+        letter-spacing: 2px;
     }
 }
