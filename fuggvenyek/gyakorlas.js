@@ -144,40 +144,17 @@
 
 }
 {
-    const helyezesSzoveg = prompt("Add meg a helyezésed", "0");
+    const helyezesSzoveg = prompt("Add meg a helyezésed", "");
     const helyezes = parseInt(helyezesSzoveg);
 
-    function olimpiaiPontok (a)
+    function olimpiaiPontok (pontok)
     {
-        switch (a) {
-            case 1:
-                return 7
-                break;
-
-            case 2:
-                return 5
-                break;
-            
-            case 3:
-                return 4
-                break;
-
-            case 4:
-                return 3
-                break;
-
-            case 5:
-                return 2
-                break;
-
-            case 6:
-                return 1
-                break;
-
-            default:
-                return 0
-                break;
-        }
+        if (pontok > 6) 
+            return 0;
+        else if (pontok == 1)
+            return 7;
+        else
+            return 7-pontok;
     }
 
     kiirAlert(`13. feladat, a pontjaid száma: ${olimpiaiPontok(helyezes)}.`,"success")
