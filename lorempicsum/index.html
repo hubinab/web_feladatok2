@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem Picsum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Lorem Picsum</h1>
+            <div class="col-12 col-lg-4">
+                <form action="">
+                    <div class="mb-2">
+                        <label for="id" class="form-label">ID</label>            
+                        <select name="id" id="id" class="form-select">
+                            <option value="-1">Kérem válasszon</option>
+                            <option value="69">Sín</option>
+                            <option value="84">Híd</option>
+                            <option value="95">Fa</option>
+                            <option value="357">Óra</option>
+                            <option value="376">New York Taxi</option>
+                            <option value="678">Hegyek</option>
+                            <option value="690">London</option>
+                            <option value="736">Felhőkarcoló</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="width" class="form-label">Szélesség</label>
+                        <input type="number" name="width" id="width" value="400" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label for="height" class="form-label">Magasság</label>
+                        <input type="number" name="height" id="height" value="320" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <input class="btn btn-primary" type="submit" id="generalas" value="Generálás">
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-8">
+                <img src="https://picsum.photos/id/237/400/320" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="seged.js"></script>
+    <script src="lorempicsum.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
