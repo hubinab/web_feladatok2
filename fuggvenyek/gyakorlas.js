@@ -116,7 +116,7 @@
 
     if (paros(szam)) 
     {
-        kiirAlert(`11. feladat, a megadott szám páros.`,"warning")
+        kiirAlert(`11. feladat, a megadott szám páros.`,"success")
     }
 
 }
@@ -140,21 +140,21 @@
         }
     }
 
-    kiirAlert(`12. feladat, a megadott szám ${szignum(szam)}.`,"success")
+    kiirAlert(`12. feladat, a megadott szám ${szignum(szam)}.`,"warning")
 
 }
 {
     const helyezesSzoveg = prompt("Add meg a helyezésed", "");
     const helyezes = parseInt(helyezesSzoveg);
 
-    function olimpiaiPontok (pontok)
+    function olimpiaiPontok (a)
     {
-        if (pontok > 6) 
+        if (a > 6) 
             return 0;
-        else if (pontok == 1)
+        else if (a == 1)
             return 7;
         else
-            return 7-pontok;
+            return 7-a;
     }
 
     kiirAlert(`13. feladat, a pontjaid száma: ${olimpiaiPontok(helyezes)}.`,"success")
