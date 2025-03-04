@@ -1,0 +1,23 @@
+img {
+    height: 300px;
+}
+
+body{
+    background-color: chocolate;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#hossz{
+    font-style: italic;
+    text-align: right;
+}
+
+h1, h2{
+    margin-top: 1rem;
+}
+
+#eredeti{
+    font-weight: bold;
+}
