@@ -30,4 +30,3 @@ for (const szereplo of sztomb) {
     ul.append(li)
 }
 szereplok.append(ul)
-
