@@ -10,15 +10,17 @@
 
 function cardlist (kapszulakjson) {
 
-    for (let kapszula in kapszulakjson) {
+    const row = document.createElement("div")
+    row.classList.add("row")
 
+    for (let kapszula in kapszulakjson) {
+       
         const col = document.createElement("div")
         col.classList.add("col-12", "col-md-6", "col-lg-3", "my-2")
-        document.querySelector(".row").append(col)
+        row.append(col)
 
         const card = document.createElement("div")
         card.classList.add("card", "h-100", "mx-1")
-        //card.style.width = "18rem"
         col.append(card)
 
         const img = document.createElement("img")
@@ -40,6 +42,7 @@ function cardlist (kapszulakjson) {
         p.append(document.createTextNode(kapszulakjson[kapszula].leiras))
         cardbody.append(p)
     }
+    return row
 } 
 
 const kavekapszulak = [
@@ -73,10 +76,4 @@ const container = document.createElement("div")
 container.classList.add(".container", "mb-2")
 document.querySelector("body").append(container)
 
-const row = document.createElement("div")
-row.classList.add("row")
-container.append(row)
-
-cardlist(kavekapszulak)
-
-
+container.append(cardlist(kavekapszulak))
