@@ -1,0 +1,22 @@
+#boxes{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(244, 244, 169);
+    flex-wrap: wrap;
+}
+
+#boxes > div {
+    width: 150px;
+    height: 150px;
+    border: 5px solid black;
+    margin: 0.25rem;
+}
+
+#keret{
+    color: darkblue;
+    background-color: lightblue;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
