@@ -1,5 +1,0 @@
-    background: #930400;
-    background: -moz-linear-gradient(top, #930400 0%, #7d0000 50%, #560000 100%);
-    background: -webkit-linear-gradient(top, #930400 0%,#7d0000 50%,#560000 100%);
-    background: linear-gradient(to bottom, #930400 0%,#7d0000 50%,#560000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#930400', endColorstr='#560000',GradientType=0 );

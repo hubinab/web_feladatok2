@@ -1,9 +1,0 @@
-SKU 	Name 	Type 	Price 	Qty
-40453 	Caffè Crema Colombia 	Cafissimo 	1095 Ft 10
-40454 	Caffè Crema India 	Cafissimo 	1095 Ft 10
-65295 	Black'n White 	Cafissimo 	995 Ft 	10
-71789 	Espresso Brasil 	Cafissimo 	1095 Ft 10
-71806 	Caffè Crema decaffeinated (Koffeinmentes) 	Cafissimo 	995 Ft  10
-74336 	Espresso El Salvador 	Cafissimo 	1095 Ft 	10
-55667 	Nespresso Caramello 	Nespresso 	1900 Ft 	10
-55997 	STARBUCKS® TOFFEE NUT LATTE 	DolceGusto 	2100 Ft 	12
