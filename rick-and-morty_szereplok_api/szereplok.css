@@ -1,0 +1,37 @@
+body{
+    background-color: #FF3CAC;
+    background: linear-gradient(225deg, #FF3CAC, #784BA0, #2B86C5);
+    color: white;
+}
+
+h2{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#karakterek>.row>.col-12>div{
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+#karakterek>.row >.col-12>div:nth-child(odd){
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#karakterek>.row>.col-12>div:nth-child(even){
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#darab{
+    color: #FF3CAC;
+    border: 2px solid #FF3CAC;
+    box-shadow: 0 0 10px #FF3CAC;
+}
+
+#darab>div{
+    margin: 1rem;
+}
+
+#darab>button{
+    margin: 1rem;
+}
