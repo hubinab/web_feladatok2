@@ -21,7 +21,7 @@
         
         <div id="teas"></div>
 
-        <form id="form" action="" class="row" >
+        <form id="form" action="" class="row" data-id="-1">
             <div class="col-12 col-md-4 mt-2">
                 <label for="name" class="form-label">Megnevezés</label>
                 <input type="text" name="name" id="name" class="form-control" value="Tea" minlength="1" maxlength="90">
@@ -70,8 +70,11 @@
                 <label for="price" class="form-label">Ár</label>
                 <input type="number" name="price" id="price" class="form-control" value="360" minlength="1" maxlength="5000">
             </div>
-            <div class="col-12 mt-2">
+            <div id="divMent" class="col-12 mt-2">
                 <button type="submit" id="ment" class="btn btn-success">Ment</button>
+            </div>
+            <div id="divMod" class="col-12 mt-2">
+                <button type="submit" id="mod" class="btn btn-success">Módosít</button>
             </div>
         </form>
 
