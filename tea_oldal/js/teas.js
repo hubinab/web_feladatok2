@@ -213,24 +213,14 @@ function modTea(pk) {
            return response.json()
         })
         .then(tea => {
-            // Ez a rész kicsit gagyi...
-            // A tábla sorokat olvasom végig, amint megtalálom a törlés gombba a
-            // módosított sort, ott az összes td-n módosítom a megjelenített értékeket 
             Dialog.close()
-            const tableRows = document.querySelectorAll("tbody tr")
-            for (const row of tableRows) {
-                if (row.dataset.id == pk) {
-                    const rowColls = row.querySelectorAll("td")
-                    rowColls[0].innerText = tea.name
-                    rowColls[1].innerText = tea.brand.name
-                    rowColls[2].innerText = tea.range
-                    rowColls[3].innerText = tea.format
-                    rowColls[4].innerText = `${tea.qty} ${tea.unit}`
-                    rowColls[5].innerText = `${tea.price} Ft`
-                    row.scrollIntoView()
-                    break
-                }
-            }
+            const rowColls = document.querySelectorAll(`tr[data-id="${pk}"] td`)
+            rowColls[0].innerText = tea.name
+            rowColls[1].innerText = tea.brand.name
+            rowColls[2].innerText = tea.range
+            rowColls[3].innerText = tea.format
+            rowColls[4].innerText = `${tea.qty} ${tea.unit}`
+            rowColls[5].innerText = `${tea.price} Ft`
         })
         .catch(error => {
             console.error(error)
@@ -302,17 +292,8 @@ function delTea(pk) {
                 }
                 throw Error("Hiba!")
             }
-            // Ez a rész kicsit gagyi...
-            // A tábla sorokat olvasom végig, amint megtalálom a törlés gombba a
-            // módosított sort, ott az összes td-n módosítom a megjelenített értékeket 
             Dialog.close()
-            const tableRows = document.querySelectorAll("tbody tr")
-            for (const row of tableRows) {
-                if (row.dataset.id == pk) {
-                    row.remove()
-                    break
-                }
-            }
+            document.querySelector(`tr[data-id="${pk}"]`).remove()
         })
 
         .catch(error => {
