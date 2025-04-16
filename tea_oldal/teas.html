@@ -15,69 +15,71 @@
                 <h1>Teák</h1>
             </div>
             <div class="col-12 col-md-6 mt-3 text-end">
-                <button type="submit" id="new" class="btn btn-primary" OnClick=" location.href='#form' ">Új termék felvitele</button>
+                <button type="button" id="new" class="btn btn-primary" OnClick=" location.href='#form' ">Új termék felvitele</button>
             </div>
         </div>
         
         <div id="teas"></div>
 
-        <form id="form" action="" class="row" data-id="-1">
-            <div class="col-12 col-md-4 mt-2">
-                <label for="name" class="form-label">Megnevezés</label>
-                <input type="text" name="name" id="name" class="form-control" value="Tea" minlength="1" maxlength="90">
-            </div>
-            <div class="col-12 col-md-4 mt-2">
-                <label for="brand_id" class="form-label">Gyártó</label>
-                <select name="brand_id" id="brand_id" class="form-select">
-                    <option value="1">Lipton</option>
-                    <option value="2">Tetley</option>
-                    <option value="3" selected>Twinings</option>
-                </select>
-            </div>
-            <div class="col-12 col-md-4 mt-2">
-                <label for="range" class="form-label">Tipus</label>
-                <select name="range" id="range" class="form-select">
-                    <option value="black">Fekete</option>
-                    <option value="fruit" selected>Gyümölcs</option>
-                    <option value="green">Zöld</option>
-                </select>
-            </div>
-            <div class="col-12 col-md-4 mt-2">
-                <label for="format" class="form-label">Kiszerelés</label>
-                <select name="format" id="format" class="form-select">
-                    <option value="tea bag">Filteres</option>
-                    <option value="can">Fémdobozos</option>
-                    <option value="bottle" selected>Palack</option>
-                </select>
-            </div>
-            <div class="col-12 col-md-4 mt-2">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <label for="qty" class="form-label">Mennyiség</label>
-                        <input type="number" name="qty" id="qty" class="form-control" value="1" minlength="1" maxlength="3000">
-                    </div>
-                    <div class="col-12 col-md-6 mt-2 mt-md-0">
-                        <label for="unit" class="form-label">Egység</label>
-                        <select name="unit" id="unit" class="form-select">
-                            <option value="db">darab</option>
-                            <option value="l">liter</option>
-                            <option value="ml" selected>mililiter</option>
-                        </select>
-                    </div>
-                </div>                
-            </div>            
-            <div class="col-12 col-md-4 mt-2">
-                <label for="price" class="form-label">Ár</label>
-                <input type="number" name="price" id="price" class="form-control" value="360" minlength="1" maxlength="5000">
-            </div>
-            <div id="divMent" class="col-12 mt-2">
-                <button type="submit" id="ment" class="btn btn-success">Ment</button>
-            </div>
-            <div id="divMod" class="col-12 mt-2">
-                <button type="submit" id="mod" class="btn btn-success">Módosít</button>
-            </div>
-        </form>
-
+        <dialog id="formDialog">
+            <h1 id="dialogH1"></h1>
+            <form id="form" action="" class="row" data-id="-1" data-func="">
+                <div class="col-12 col-md-4 mt-2">
+                    <label for="name" class="form-label">Megnevezés</label>
+                    <input type="text" name="name" id="name" class="form-control" value="Tea" minlength="1" maxlength="90">
+                </div>
+                <div class="col-12 col-md-4 mt-2">
+                    <label for="brand_id" class="form-label">Gyártó</label>
+                    <select name="brand_id" id="brand_id" class="form-select">
+                        <option value="1">Lipton</option>
+                        <option value="2">Tetley</option>
+                        <option value="3" selected>Twinings</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4 mt-2">
+                    <label for="range" class="form-label">Tipus</label>
+                    <select name="range" id="range" class="form-select">
+                        <option value="black">Fekete</option>
+                        <option value="fruit" selected>Gyümölcs</option>
+                        <option value="green">Zöld</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4 mt-2">
+                    <label for="format" class="form-label">Kiszerelés</label>
+                    <select name="format" id="format" class="form-select">
+                        <option value="tea bag">Filteres</option>
+                        <option value="can">Fémdobozos</option>
+                        <option value="bottle" selected>Palack</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4 mt-2">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <label for="qty" class="form-label">Mennyiség</label>
+                            <input type="number" name="qty" id="qty" class="form-control" value="1" minlength="1" maxlength="3000">
+                        </div>
+                        <div class="col-12 col-md-6 mt-2 mt-md-0">
+                            <label for="unit" class="form-label">Egység</label>
+                            <select name="unit" id="unit" class="form-select">
+                                <option value="db">darab</option>
+                                <option value="l">liter</option>
+                                <option value="ml" selected>mililiter</option>
+                            </select>
+                        </div>
+                    </div>                
+                </div>            
+                <div class="col-12 col-md-4 mt-2">
+                    <label for="price" class="form-label">Ár</label>
+                    <input type="number" name="price" id="price" class="form-control" value="360" minlength="1" maxlength="5000">
+                </div>
+                <div id="divbtns" class="col-12 mt-2">
+                    <button type="submit" id="ment" class="btn btn-success">Ment</button>
+                    <button type="submit" id="mod" class="btn btn-success">Módosít</button>
+                    <button type="submit" id="del" class="btn btn-success">Törlés</button>
+                    <button type="button" id="cancel" class="btn btn-danger">Mégse</button>
+                </div>
+            </form>
+        </dialog>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="./js/teas.js"></script>

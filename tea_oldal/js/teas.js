@@ -1,7 +1,28 @@
 "use strict"
 
 // *********************************************************
-// GET data & show table
+// "GLOBAL" variables
+// *********************************************************
+
+const Dialog = document.getElementById("formDialog")
+const DialogH1 = document.getElementById("dialogH1")
+const Modosit = document.getElementById("mod")
+const Ment = document.getElementById("ment")
+const Torol = document.getElementById("del")
+const Form = document.getElementById("form")
+
+// SULI:
+//const baseUrl = "http://172.19.0.12:8761/api"
+
+// Otthon:
+//const baseUrl = "http://127.0.0.1:8000/api"
+//const baseUrl = "http://localhost:8000/api"
+//const baseUrl = "http://192.168.1.168:8000/api"
+const baseUrl = "http://84.21.26.136:8000/api"
+
+
+// *********************************************************
+// GET all data & show table
 // *********************************************************
 function displayTable() {
 
@@ -82,12 +103,11 @@ function generateRow(tea) {
     const divButtonEdit = document.createElement("div")
     divButtonEdit.classList.add("col-12", "col-xxl-6", "mt-1")
     const buttonEdit = document.createElement("button")
-    buttonEdit.type = "submit"
+    buttonEdit.type = "button"
     buttonEdit.id = "edit"
     buttonEdit.classList.add("btn", "btn-warning")
     buttonEdit.textContent = "Szerkesztés"
-    buttonEdit.value = tea.id
-    buttonEdit.onclick="\" location.href=\'#form\' \""
+    buttonEdit.dataset.id = tea.id
     buttonEdit.addEventListener("click", evtEdit)
     divButtonEdit.append(buttonEdit)
 
@@ -96,11 +116,11 @@ function generateRow(tea) {
     const divButtonDel = document.createElement("div")
     divButtonDel.classList.add("col-12", "col-xxl-6", "mt-1")
     const buttonDel = document.createElement("button")
-    buttonDel.type = "submit"
+    buttonDel.type = "button"
     buttonDel.id = "del"
     buttonDel.classList.add("btn", "btn-danger")
     buttonDel.textContent = "Törlés"
-    buttonDel.value = tea.id
+    buttonDel.dataset.id = tea.id
     buttonDel.addEventListener("click", evtDelete)
     divButtonDel.append(buttonDel)
 
@@ -116,27 +136,19 @@ function generateRow(tea) {
 // *********************************************************
 // Form submit event (POST new record to API)
 // *********************************************************
-function sendNewTea(evt) {
+function sendNewTea() {
     
-    evt.preventDefault()
-
-    const inputName = document.getElementById("name")
-    const inputBrandId = document.getElementById("brand_id")
-    const inputRange = document.getElementById("range")
-    const inputFormat = document.getElementById("format")
-    const inputQty = document.getElementById("qty")
-    const inputUnit = document.getElementById("unit")
-    const inputPrice = document.getElementById("price")
+    const product = new FormData(Form)
 
     const newTea = 
     {
-        "name": inputName.value,
-        "range": inputRange.value,
-        "format": inputFormat.value,
-        "qty": inputQty.value,
-        "unit": inputUnit.value,
-        "price": inputPrice.value,
-        "brand_id": inputBrandId.value
+        "name": product.get("name"),
+        "range": product.get("range"),
+        "format": product.get("format"),
+        "qty": product.get("qty"),
+        "unit": product.get("unit"),
+        "price": product.get("price"),
+        "brand_id": product.get("brand_id"),
     }
 
     fetch(baseUrl+"/teas/", {
@@ -160,6 +172,8 @@ function sendNewTea(evt) {
         .then(tea => {
             const row = generateRow(tea)
             document.querySelector("#teas > table > tbody").append(row)
+            Dialog.close()
+            row.scrollIntoView()
         })
         .catch(error => {
             console.error(error)
@@ -169,29 +183,19 @@ function sendNewTea(evt) {
 // *********************************************************
 // PUT record to API
 // *********************************************************
-function modTea(evt) {
+function modTea(pk) {
     
-    evt.preventDefault()
-
-    const pk = document.getElementById("form").dataset.id
-
-    const inputName = document.getElementById("name")
-    const inputBrandId = document.getElementById("brand_id")
-    const inputRange = document.getElementById("range")
-    const inputFormat = document.getElementById("format")
-    const inputQty = document.getElementById("qty")
-    const inputUnit = document.getElementById("unit")
-    const inputPrice = document.getElementById("price")
+    const product = new FormData(Form)
 
     const modTea = 
     {
-        "name": inputName.value,
-        "range": inputRange.value,
-        "format": inputFormat.value,
-        "qty": inputQty.value,
-        "unit": inputUnit.value,
-        "price": inputPrice.value,
-        "brand_id": inputBrandId.value
+        "name": product.get("name"),
+        "range": product.get("range"),
+        "format": product.get("format"),
+        "qty": product.get("qty"),
+        "unit": product.get("unit"),
+        "price": product.get("price"),
+        "brand_id": product.get("brand_id"),
     }
 
     fetch(baseUrl+"/teas/"+pk, {
@@ -216,10 +220,11 @@ function modTea(evt) {
             // Ez a rész kicsit gagyi...
             // A tábla sorokat olvasom végig, amint megtalálom a törlés gombba a
             // módosított sort, ott az összes td-n módosítom a megjelenített értékeket 
+            Dialog.close()
             const tableRows = document.querySelectorAll("tbody tr")
             for (const row of tableRows) {
                 //   tr               td              div              div               btn
-                if (row.lastElementChild.lastElementChild.lastElementChild.firstElementChild.value == pk) {
+                if (row.lastElementChild.lastElementChild.lastElementChild.firstElementChild.dataset.id == pk) {
                     const rowColls = row.querySelectorAll("td")
                     rowColls[0].innerText = tea.name
                     rowColls[1].innerText = tea.brand.name
@@ -227,8 +232,6 @@ function modTea(evt) {
                     rowColls[3].innerText = tea.format
                     rowColls[4].innerText = `${tea.qty} ${tea.unit}`
                     rowColls[5].innerText = `${tea.price} Ft`
-                    const form = document.getElementById("form")
-                    form.style.display = "none"                    
                     row.scrollIntoView()
                     break
                 }
@@ -240,13 +243,11 @@ function modTea(evt) {
 }
 
 // *********************************************************
-// Edit button click event 
+// GET by ID
 // *********************************************************
-function evtEdit(evt) {
-
-    evt.preventDefault()
-
-    fetch(baseUrl+"/teas/"+evt.target.value)
+function getByID(pk, func) {
+    
+    fetch(baseUrl+"/teas/"+pk)
     
         .then(response => {
             if (!response.ok) {
@@ -255,13 +256,7 @@ function evtEdit(evt) {
             return response.json()
         })
         .then((tea) => {
-            const modosit = document.getElementById("mod")
-            modosit.style.display = ""
-            const ment = document.getElementById("ment")
-            ment.style.display = "none"
         
-            const form = document.getElementById("form")
-            form.style.display = ""
             form.name.value = tea.name
             form.brand_id.value = tea.brand
             form.range.value = tea.range
@@ -270,7 +265,21 @@ function evtEdit(evt) {
             form.unit.value = tea.unit
             form.price.value = tea.price
             form.dataset.id = tea.id
-            form.scrollIntoView()
+            form.dataset.func = func
+
+            if (func == "DELETE") {
+                DialogH1.textContent = "Biztos törli a teát?"
+                Modosit.style.display = "none"
+                Ment.style.display = "none"
+                Torol.style.display = ""
+            }
+            else if (func == "PUT"){
+                DialogH1.textContent = "Tea adatok módosítása"
+                Modosit.style.display = ""
+                Ment.style.display = "none"
+                Torol.style.display = "none"
+            }
+            Dialog.showModal()
         })
         .catch(err => {
             console.error(err)
@@ -279,13 +288,11 @@ function evtEdit(evt) {
 }
 
 // *********************************************************
-// Delete button click event (send DELETE request to API)
+// Send DELETE request to API
 // *********************************************************
-function evtDelete(evt) {
+function delTea(pk) {
     
-    evt.preventDefault()
-
-    fetch(baseUrl+"/teas/"+evt.target.value, {
+    fetch(baseUrl+"/teas/"+pk, {
         "method": "delete",
         "headers": {
             "Content-Type": "application/json",
@@ -294,56 +301,90 @@ function evtDelete(evt) {
     })
         .then(response => {
             if (!response.ok) {
-                if (404 == response.status) {
-                    alert("Nincs ilyen rekord")
-                    throw Error("Nincs ilyen rekord, törlés sikertelen")
+                if (422 == response.status) {
+                    alert("Az elküldött adatok helytelenek")
+                    throw Error("Az elküldött adatok helytelenek")
                 }
                 throw Error("Hiba!")
             }
-            return evt
+            // Ez a rész kicsit gagyi...
+            // A tábla sorokat olvasom végig, amint megtalálom a törlés gombba a
+            // módosított sort, ott az összes td-n módosítom a megjelenített értékeket 
+            Dialog.close()
+            const tableRows = document.querySelectorAll("tbody tr")
+            for (const row of tableRows) {
+                //   tr               td              div              div               btn
+                if (row.lastElementChild.lastElementChild.lastElementChild.firstElementChild.dataset.id == pk) {
+                    row.remove()
+                    break
+                }
+            }
         })
-        .then(evt => {
-            // Ez a rész is kicsit gagyi...
-            // ....BTN        -> div        -> div         -> td         -> tr
-            evt.target.parentElement.parentElement.parentElement.parentElement.remove()
-        })
+
         .catch(error => {
             console.error(error)
         })
 }
 
+// *********************************************************
+// Edit button click event 
+// *********************************************************
+function evtEdit(evt) {
+
+    evt.preventDefault()
+    getByID(evt.target.dataset.id, "PUT")
+
+}
+
+// *********************************************************
+// Delete button click event
+// *********************************************************
+function evtDelete(evt) {
+    
+    evt.preventDefault()
+    getByID(evt.target.dataset.id, "DELETE")
+}
+
+//*******************************************************
+// Global Events
+//*******************************************************
+
+// Form submit
+const form = document.querySelector("form")
+form.addEventListener("submit", (evt) => {
+    evt.preventDefault()
+    if (evt.target.dataset.func == "POST") {
+        sendNewTea()
+    }
+    else if (evt.target.dataset.func == "PUT") {
+        modTea(evt.target.dataset.id)
+    }
+    else if (evt.target.dataset.func == "DELETE") {
+        delTea(evt.target.dataset.id)
+    }
+})
+
+// New product click event
+const buttonUj = document.getElementById("new")
+buttonUj.addEventListener("click", () => {
+    DialogH1.textContent = "Új tea felvitele"
+    Modosit.style.display = "none"
+    Torol.style.display = "none"
+    Ment.style.display = ""
+    form.dataset.func = "POST"
+    Dialog.showModal()
+})
+
+// Cancel button click event
+const buttonMegse = document.getElementById("cancel")
+buttonMegse.addEventListener("click",(evt) => {
+    evt.preventDefault()
+    Dialog.close()
+})
+
 //*******************************************************
 // Main
 //*******************************************************
 
-// SULI:
-//const baseUrl = "http://172.19.0.12:8761/api"
-
-// Otthon:
-//const baseUrl = "http://127.0.0.1:8000/api"
-//const baseUrl = "http://localhost:8000/api"
-//const baseUrl = "http://192.168.1.168:8000/api"
-const baseUrl = "http://84.21.26.136:8000/api"
-
 displayTable()
 
-// Ürlap submit esemény figyelése
-const form = document.querySelector("form")
-form.addEventListener("submit", sendNewTea)
-form.style.display = "none"; 
-
-// "Új termék felvitele" gomb nyomás figyelése
-const buttonUj = document.getElementById("new")
-buttonUj.addEventListener("click", () => {
-    const form = document.querySelector("form")
-    form.style.display = "";
-    form.scrollIntoView()
-    const modosit = document.getElementById("mod")
-    modosit.style.display = "none"
-    const ment = document.getElementById("ment")
-    ment.style.display = ""
-})
-
-// Módosítás gomb nyomás figyelés
-const buttonMod = document.getElementById("mod")
-buttonMod.addEventListener("click", modTea)
