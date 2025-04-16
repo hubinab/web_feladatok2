@@ -73,6 +73,24 @@ function generateTable(teas) {
 }
 
 // *********************************************************
+// Add to row a button
+// *********************************************************
+function createButton(id, teaId, event, text, color){
+    const divButton = document.createElement("div")
+    divButton.classList.add("col-12", "col-xxl-6", "mt-1")
+    const button = document.createElement("button")
+    button.type = "button"
+    button.id = id
+    button.classList.add("btn", color)
+    button.textContent = text
+    button.dataset.id = teaId
+    button.addEventListener("click", event)
+    divButton.append(button)
+    
+    return divButton
+}
+
+// *********************************************************
 // Add new row to table
 // *********************************************************
 function generateRow(tea) {
@@ -100,32 +118,9 @@ function generateRow(tea) {
     const divButtons = document.createElement("div")
     divButtons.classList.add("row", "mt-n1")
     
-    const divButtonEdit = document.createElement("div")
-    divButtonEdit.classList.add("col-12", "col-xxl-6", "mt-1")
-    const buttonEdit = document.createElement("button")
-    buttonEdit.type = "button"
-    buttonEdit.id = "edit"
-    buttonEdit.classList.add("btn", "btn-warning")
-    buttonEdit.textContent = "Szerkesztés"
-    buttonEdit.dataset.id = tea.id
-    buttonEdit.addEventListener("click", evtEdit)
-    divButtonEdit.append(buttonEdit)
-
-    divButtons.append(divButtonEdit)
-
-    const divButtonDel = document.createElement("div")
-    divButtonDel.classList.add("col-12", "col-xxl-6", "mt-1")
-    const buttonDel = document.createElement("button")
-    buttonDel.type = "button"
-    buttonDel.id = "del"
-    buttonDel.classList.add("btn", "btn-danger")
-    buttonDel.textContent = "Törlés"
-    buttonDel.dataset.id = tea.id
-    buttonDel.addEventListener("click", evtDelete)
-    divButtonDel.append(buttonDel)
-
-    divButtons.append(divButtonDel)
-
+    divButtons.append(createButton("edit", tea.id, evtEdit, "Szerkesztés", "btn-warning"))
+    divButtons.append(createButton("del", tea.id, evtDelete, "Törlés", "btn-danger"))
+    
     td.append(divButtons)
 
     tr.append(td)
