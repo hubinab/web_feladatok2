@@ -3,23 +3,16 @@
 // *********************************************************
 // "GLOBAL" variables
 // *********************************************************
-
 const Dialog = document.getElementById("formDialog")
 const DialogH1 = document.getElementById("dialogH1")
+const Form = document.getElementById("form")
 const Modosit = document.getElementById("mod")
 const Ment = document.getElementById("ment")
 const Torol = document.getElementById("del")
-const Form = document.getElementById("form")
 
-// SULI:
 //const baseUrl = "http://172.19.0.12:8761/api"
-
-// Otthon:
-//const baseUrl = "http://127.0.0.1:8000/api"
 //const baseUrl = "http://localhost:8000/api"
-//const baseUrl = "http://192.168.1.168:8000/api"
 const baseUrl = "http://84.21.26.136:8000/api"
-
 
 // *********************************************************
 // GET all data & show table
@@ -228,6 +221,35 @@ function modTea(pk) {
 }
 
 // *********************************************************
+// Send DELETE request to API
+// *********************************************************
+function delTea(pk) {
+    
+    fetch(baseUrl+"/teas/"+pk, {
+        "method": "delete",
+        "headers": {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                if (422 == response.status) {
+                    alert("Az elküldött adatok helytelenek")
+                    throw Error("Az elküldött adatok helytelenek")
+                }
+                throw Error("Hiba!")
+            }
+            Dialog.close()
+            document.querySelector(`tr[data-id="${pk}"]`).remove()
+        })
+
+        .catch(error => {
+            console.error(error)
+        })
+}
+
+// *********************************************************
 // GET by ID
 // *********************************************************
 function getByID(pk, func) {
@@ -273,35 +295,6 @@ function getByID(pk, func) {
 }
 
 // *********************************************************
-// Send DELETE request to API
-// *********************************************************
-function delTea(pk) {
-    
-    fetch(baseUrl+"/teas/"+pk, {
-        "method": "delete",
-        "headers": {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                if (422 == response.status) {
-                    alert("Az elküldött adatok helytelenek")
-                    throw Error("Az elküldött adatok helytelenek")
-                }
-                throw Error("Hiba!")
-            }
-            Dialog.close()
-            document.querySelector(`tr[data-id="${pk}"]`).remove()
-        })
-
-        .catch(error => {
-            console.error(error)
-        })
-}
-
-// *********************************************************
 // Edit button click event 
 // *********************************************************
 function evtEdit(evt) {
@@ -323,7 +316,6 @@ function evtDelete(evt) {
 //*******************************************************
 // Global Events
 //*******************************************************
-
 // Form submit
 const form = document.querySelector("form")
 form.addEventListener("submit", (evt) => {
@@ -360,6 +352,4 @@ buttonMegse.addEventListener("click",(evt) => {
 //*******************************************************
 // Main
 //*******************************************************
-
 displayTable()
-
