@@ -96,6 +96,7 @@ function createButton(id, teaId, event, text, color){
 function generateRow(tea) {
 
     const tr = document.createElement("tr")
+    tr.dataset.id = tea.id
 
     const contents = [
         tea.name,
@@ -218,8 +219,7 @@ function modTea(pk) {
             Dialog.close()
             const tableRows = document.querySelectorAll("tbody tr")
             for (const row of tableRows) {
-                //   tr               td              div              div               btn
-                if (row.lastElementChild.lastElementChild.lastElementChild.firstElementChild.dataset.id == pk) {
+                if (row.dataset.id == pk) {
                     const rowColls = row.querySelectorAll("td")
                     rowColls[0].innerText = tea.name
                     rowColls[1].innerText = tea.brand.name
@@ -308,8 +308,7 @@ function delTea(pk) {
             Dialog.close()
             const tableRows = document.querySelectorAll("tbody tr")
             for (const row of tableRows) {
-                //   tr               td              div              div               btn
-                if (row.lastElementChild.lastElementChild.lastElementChild.firstElementChild.dataset.id == pk) {
+                if (row.dataset.id == pk) {
                     row.remove()
                     break
                 }
