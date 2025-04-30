@@ -1,8 +1,9 @@
 "use strict"
 
 // Globals
-const alapURL = "http://neu.tanulosarok.eu:8888/api/v1"
-const TablaTartalom = document.querySelector(".container")
+//const alapURL = "http://neu.tanulosarok.eu:8888/api/v1"
+const alapURL = "http://127.0.0.1:8000/api/v1"
+const TablaTartalom = document.getElementById("divTable")
 const Dialogus = document.getElementById("dialog")
 const DialogusH1 = document.getElementById("dialogH1")
 const Urlap = document.getElementById("form")
@@ -16,6 +17,7 @@ const Uj = document.getElementById("new")
 function genHead() {
     const thead = document.createElement("thead")
     const tr = document.createElement("tr")
+    tr.classList.add("table-dark")
 
     const titles = ["Id", "Vezeték név", "Kereszt név", "Osztály", "Karbantartás"]
     for (const title of titles) {
@@ -30,13 +32,16 @@ function genHead() {
 }
 
 function createButton(text, color, id, rowId, event) {
+    // const divButton = document.createElement("div")
+    // divButton.classList.add("col-12", "col-xxl-6", "mt-1")
     const button = document.createElement("button")
     button.dataset.id = rowId
     button.type = "button"
-    button.classList.add("btn", color, "m-1")
+    button.classList.add("btn", color, "mt-1", "me-2")
     button.textContent = text
     button.id = id
     button.addEventListener("click", event)
+    // divButton.append(button)
 
     return button
 }
@@ -55,14 +60,24 @@ function genRow(tanulo) {
     for (const oszlop of oszlopok) {
         const td = document.createElement("td")
         td.innerText = oszlop
+        td.style.paddingTop = "1rem"
         tr.append(td)
     }
 
+    const td = document.createElement("td")
+
+    const divRow = document.createElement("div")
+    divRow.classList.add("row", "mt-n1")
+
     const divButtons = document.createElement("div")
+    divButtons.classList.add("col-12", "col-md-6", "mt-1")
     divButtons.append(createButton("Szerkesztés", "btn-success", "edit", tanulo.id, editEvt))
     divButtons.append(createButton("Törlés", "btn-danger", "delete", tanulo.id, deleteEvt))
-    tr.append(divButtons)
 
+    divRow.append(divButtons)
+    td.append(divRow)
+    tr.append(td)
+    
     return tr
 }
 

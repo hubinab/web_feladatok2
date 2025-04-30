@@ -66,7 +66,7 @@ function generateTable(teas) {
 }
 
 // *********************************************************
-// Add to row a button
+// Add a button to row
 // *********************************************************
 function createButton(id, teaId, event, text, color){
     const divButton = document.createElement("div")
@@ -108,28 +108,25 @@ function generateRow(tea) {
     }
 
     const td = document.createElement("td")
-
     const divButtons = document.createElement("div")
     divButtons.classList.add("row", "mt-n1")
-    
     divButtons.append(createButton("edit", tea.id, evtEdit, "Szerkesztés", "btn-warning"))
     divButtons.append(createButton("del", tea.id, evtDelete, "Törlés", "btn-danger"))
-    
     td.append(divButtons)
 
     tr.append(td)
 
-    return tr            
+    return tr
 }
 
 // *********************************************************
 // Form submit event (POST new record to API)
 // *********************************************************
 function sendNewTea() {
-    
+
     const product = new FormData(Form)
 
-    const newTea = 
+    const newTea =
     {
         "name": product.get("name"),
         "range": product.get("range"),
@@ -173,10 +170,10 @@ function sendNewTea() {
 // PUT record to API
 // *********************************************************
 function modTea(pk) {
-    
+
     const product = new FormData(Form)
 
-    const modTea = 
+    const modTea =
     {
         "name": product.get("name"),
         "range": product.get("range"),
@@ -253,9 +250,9 @@ function delTea(pk) {
 // GET by ID
 // *********************************************************
 function getByID(pk, func) {
-    
+
     fetch(baseUrl+"/teas/"+pk)
-    
+
         .then(response => {
             if (!response.ok) {
                 throw Error("Hálózati hiba!")
@@ -263,7 +260,7 @@ function getByID(pk, func) {
             return response.json()
         })
         .then((tea) => {
-        
+
             form.name.value = tea.name
             form.brand_id.value = tea.brand
             form.range.value = tea.range
@@ -308,14 +305,14 @@ function evtEdit(evt) {
 // Delete button click event
 // *********************************************************
 function evtDelete(evt) {
-    
+
     evt.preventDefault()
     getByID(evt.target.dataset.id, "DELETE")
 }
 
-//*******************************************************
+// *******************************************************
 // Global Events
-//*******************************************************
+// *******************************************************
 // Form submit
 const form = document.querySelector("form")
 form.addEventListener("submit", (evt) => {
@@ -349,7 +346,7 @@ buttonMegse.addEventListener("click",(evt) => {
     Dialog.close()
 })
 
-//*******************************************************
+// *******************************************************
 // Main
-//*******************************************************
+// *******************************************************
 displayTable()

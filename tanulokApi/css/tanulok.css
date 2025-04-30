@@ -1,3 +1,6 @@
 dialog {
     width: 50vw;
+    border-radius: 1rem;
+    border-color: rgb(164, 169, 171);
+    box-shadow: 5px 5px 5px rgb(164, 169, 171);
 }
