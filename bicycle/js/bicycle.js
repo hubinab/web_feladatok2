@@ -80,7 +80,7 @@ function showBicycles() {
 // paraméterbe, de az eseményfigyelőnek nem lehet paramétert átadni...
 // A saját tudásom szerint megoldottam:
 // function loadBicycle(evt) {
-//     fetch(`${baseURL}/bicycles/${evt.target.id}`)
+//     fetch(`${baseURL}/bicycles/${evt.target.dataset.id}`)
 
 // A MI megadta a megoldást: arrow function az eseménykezelő
 // így ott még helyben hívható ez a függvény az id-val.
