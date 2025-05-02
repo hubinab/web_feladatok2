@@ -69,6 +69,7 @@ function load() {
         return response.json()
     })
     .then(teslas => {
+        cars.innerHTML = ""
         cars.append(table(teslas))
     })
 }
@@ -137,7 +138,8 @@ function torles(evt) {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        evt.target.parentElement.parentElement.parentElement.remove()
+        //evt.target.parentElement.parentElement.parentElement.remove()
+        load()
     })
     .catch(err => {
         alert("A törlés közben hiba történt.")

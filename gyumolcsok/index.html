@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyömölcsöskert</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/garden.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Gyömölcsöskert</h1>
+        <form>
+            <div class="row pb-2">
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="person" class="form-label">Név</label>
+                    <select name="person" id="person" class="form-select">
+                        <option value="anett">Anett</option>
+                        <option value="laci" selected>Laci</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="fruit" class="form-label">Gyümölcs</label>
+                    <select name="fruit" id="fruit" class="form-select">
+                        <option value="apple">Alma</option>
+                        <option value="bananas" selected>Banán</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="qty" class="form-label">Darab</label>
+                    <input type="number" name="qty" id="qty" value="2" min="1" max="6" class="form-control">
+                </div>
+                <div class="col-12 col-md-3 mt-2 align-self-end">
+                    <button id="ultetes" type="button" class="btn btn-outline-primary">Ültetés</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-6 align-items-center" id="laci"></div>
+            <div class="col-6" id="anett"></div>
+        </div>
+    </div>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/code.js"></script>
+</body>
+</html>

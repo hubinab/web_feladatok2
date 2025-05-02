@@ -1,0 +1,36 @@
+:root{
+    --anett: salmon;
+    --laci: lightskyblue;
+}
+
+body{
+    background-color: var(--laci);
+    border: 1px solid green;
+    margin: 5px;
+}
+
+body > div{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+label{
+    color: green;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+#laci{
+    background-color: var(--laci);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#anett{
+    background-color: var(--anett);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
