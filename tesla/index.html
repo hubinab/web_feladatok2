@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesla</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/tesla.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row mt-2">
+      <div class="col-md-9">
+        <h1>Tesla</h1>
+      </div>
+      <div class="col-md-3 d-grid">
+        <button id="newbutton" class="btn btn-primary">Új modell</button>
+      </div>
+      <div class="col-12">
+        <div id="cars" class="mt-3">
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row d-none mt-3" id="newcar">
+      <form class="col-12" method="post" action="">
+        <div class="row align-items-end">
+          <div class=" col-md-4">
+            <label for="model">Modell</label>
+            <input type="text" class="form-control" id="model" name="model">
+          </div>
+          <div class=" col-md-2">
+            <label for="gyorsitas">Gyorsítás</label>
+            <input type="number" class="form-control" id="acceleration" name="acceleration">
+          </div>
+          <div class=" col-md-2">
+            <label for="fogyasztas">WLTP</label>
+            <input type="text" class="form-control" id="wltp" name="wltp">
+          </div>
+
+          <div class=" col-md-2">
+            <label for="ulesek">Ülések száma</label>
+            <input type="number" class="form-control" id="seats" name="seats">
+          </div>
+          <div class="col-md-2 ">
+            <button type="submit" class="btn btn-primary" id="ment">Ment</button>
+          </div>
+          <!-- <div class="col-md-2 mt-2">
+            <button type="button" class="btn btn-danger" id="delete">Törlés</button>
+          </div> -->
+        </div>
+
+
+
+      </form>
+    </div>
+
+    
+  </div>
+
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/tesla.js"></script>
+</body>
+
+</html>
