@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Napilapok</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/napilapok.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Napilapok</h1>
+        <div id="adatok"></div>
+        <button type="button" class="btn btn-primary" id="uj">Új felvitel</button>
+        <div id="new" class="d-none">
+            <form class="row">
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="cim" class="form-label">Cím</label>
+                    <input type="text" name="cim" id="cim" class="form-control">
+                </div>
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="alapitva" class="form-label">Alapítva</label>
+                    <input type="number" name="alapitva" id="alapitva" class="form-control">
+                </div>
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="kiado" class="form-label">Kiadó</label>
+                    <input type="text" name="kiado" id="kiado" class="form-control">
+                </div>
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="peldany" class="form-label">Példány</label>
+                    <input type="number" name="peldany" id="peldany" class="form-control">
+                </div>
+                <div class="col-12 col-md-3 mt-2">
+                    <label for="tematika" class="form-label">Tematika</label>
+                    <input type="text" name="tematika" id="tematika" class="form-control">
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        <button type="submit" id="ment" class="btn btn-success">Ment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>

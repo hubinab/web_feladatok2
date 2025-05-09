@@ -2,7 +2,8 @@
 
 // Globals
 //const alapURL = "http://neu.tanulosarok.eu:8888/api/v1"
-const alapURL = "http://127.0.0.1:8000/api/v1"
+//const alapURL = "http://127.0.0.1:8000/api/v1"
+const alapURL = "http://127.0.0.1:8888/api/v1"
 const TablaTartalom = document.getElementById("divTable")
 const Dialogus = document.getElementById("dialog")
 const DialogusH1 = document.getElementById("dialogH1")

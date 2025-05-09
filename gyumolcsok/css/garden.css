@@ -21,16 +21,16 @@ label{
 
 #laci{
     background-color: var(--laci);
-    display: flex;
+/*    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
 }
 
 #anett{
     background-color: var(--anett);
-    display: flex;
+/*    display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column;*/
 }
