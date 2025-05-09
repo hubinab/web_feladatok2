@@ -1,5 +1,10 @@
 "use strict"
 
+// Még elérhető Csaba github-ján a json szerver.
+// A windows-osoknak a debian-t (vagy egy linux-os 
+// virtuális szervert, amit eddig is használtatok)
+// el kell indítani és ott:
+
 // git clone https://github.com/rcsnjszg/ujsagos-json-server
 // cd ujsagos-json-server
 // make build
@@ -18,6 +23,8 @@ const urlap = document.querySelector("form")
 
 // =====> Táblázat látrehozása, és megjelenítése
 function generateRow(napilap) {
+    // Létrehozunk egy sort (tr), ebbe teszük a cellákat(td) 
+    // és ebbe tesszük a paraméterként kapott napilap adatait (adatok tömbből).
     const tr = document.createElement("tr")                 //<tr>
     // itt létrehozunk egy tömböt, hogy a cellákat (<td></td>)
     // ciklusban tudjuk beilleszteni a sorba (<tr></tr>)
@@ -26,8 +33,7 @@ function generateRow(napilap) {
         napilap.cim,
         napilap.alapitva,
         napilap.kiado,
-        // Nem emlékszem, mivolt a Valami és a darab helyén :D
-        `Valami ${napilap.peldany} darab`,
+        `Kb. ${napilap.peldany} példány`,
         napilap.tematika
     ]
 
@@ -67,7 +73,7 @@ function generateRow(napilap) {
     // Visszaadjuk a létrehozott sort(tr)
     return tr                                               //</tr>
     /*
-    HTML-ben ez így nézne ki (ezt adja vissz ez a függvény):
+    HTML-ben ez így nézne ki (ezt adja vissza ez a függvény):
     <tr>
         <td>napilap.id értéke (pl.: "7")</td>
         <td>napilap.cim értéke (pl.: "Nemzeti Sport")</td>
@@ -130,7 +136,7 @@ function generateTable(napilapok) {
     // Visszaadjuk a táblázatot:
     return table                                            //</table>
     /*
-    HTML-ben ez így nézne ki (ezt adja vissz ez a függvény):
+    HTML-ben ez így nézne ki (ezt adja vissza ez a függvény):
     <table>
         <thead>
             <tr>
