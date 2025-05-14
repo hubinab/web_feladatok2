@@ -1,0 +1,35 @@
+:root{
+    --mycolor: darkblue
+}
+
+body {
+    background-image: url(../img/hong-kong-min.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#street {
+    background-color: lightgray;
+    min-height: 10rem;
+    margin-top: 1rem;
+    display: flex;
+}
+
+.form-label {
+    color: darkblue;
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--mycolor);
+    text-align: center;
+}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.7);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px var(--mycolor);
+}

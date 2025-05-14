@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Járművek</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/vehicles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Járművek</h1>
+        <form action="" class="row">
+            <div class="col-12 col-md-4 mt-2">
+                <label for="vehicle" class="form-label">Jármű</label>
+                <select name="vehicle" id="vehicle" class="form-select">
+                    <option value="ambulance">Mentő</option>
+                    <option value="police-car">Rendőr</option>
+                    <option value="fire-truck" selected>Tűzoltó</option>
+                    <option value="taxi">Taxi</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-4 mt-2">
+                <label for="n" class="form-label">Darabszám</label>
+                <input type="number" name="n" id="n" class="form-control" value="3" min="1" max="10">
+            </div>
+            <div class="col-12 col-md-4 mt-2 align-self-end">
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-2 d-grid">
+                        <button type="submit" class="btn btn-primary">Útra vele</button>
+                    </div>
+                    <div class="col-12 col-md-6 mt-2 d-grid">
+                        <button type="button" class="btn btn-danger">Töröl</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div id="street" class="p-2 align-items-center d-flex flex-wrap justify-content-between align-items-end"></div>
+    </div>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/vehicles.js"></script>
+</body>
+</html>
